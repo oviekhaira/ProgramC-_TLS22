@@ -1,0 +1,83 @@
+#include <iostream>
+#include <conio.h>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+
+    string nama[10];
+    int jum, gol[10], JamKerja[10], JamLembur[10];
+    int GajiPokok[10], GajiLembur[10], TunjanganPengabdian[10], PajakGajiPokok[10], PajakLembur[10], TotalPajak[10], GajiBersih[10];
+    
+    cout << "Masukkan Jumlah Karyawan : " ;
+    cin >> jum;
+    cout << endl;
+
+    
+    for (int i=1;i<=jum;i++){
+        cout << "Karyawan Ke-" << i << endl;
+        cout << "Masukan Nama : " ;
+        cin >> nama [i];
+        cout << "Masukan Golongan : " ;
+        cin >> gol [i];
+        cout << "Masukan Jumlah Jam Kerja : " ;
+        cin >> JamKerja [i];
+    
+        
+        switch(gol[i]){
+            case 1 :
+                    GajiPokok[i] = 1500000;
+                    TunjanganPengabdian[i] = 200000;
+                    break;
+            case 2 :
+                    GajiPokok[i] = 2000000;
+                    TunjanganPengabdian[i] = 250000;
+                    break;    
+            case 3 :
+                GajiPokok[i] = 2500000;
+                TunjanganPengabdian[i] = 300000;
+                break;    
+            case 4 :
+                    GajiPokok[i] = 3000000;
+                    TunjanganPengabdian[i] = 350000;
+                    break; 
+            default :
+                    GajiPokok[i] = 0;
+                    TunjanganPengabdian[i] = 0;
+            }
+        if (JamKerja[i]>200){
+            JamLembur[i] = JamKerja[i]-200;
+        }else {
+            JamLembur[i] = 0;
+        }
+        
+        GajiLembur[i] = JamLembur[i] * 20000;
+        PajakGajiPokok[i] = 0.05 * GajiPokok [i];
+        PajakLembur[i] = 0.05 * GajiLembur[i];
+        TotalPajak[i] = PajakGajiPokok[i] + PajakLembur[i];
+        GajiBersih[i] = ((GajiPokok[i] + TunjanganPengabdian[i] + GajiLembur[i]) - TotalPajak[i]);
+        cout << endl;
+    }
+        
+        cout << "Menghitung Gaji Karyawan" << endl;
+        cout << endl;
+        
+        for (int i=1;i<=jum;i++){
+            cout << "Karyawan Ke-" << i << endl;
+            cout << "Nama                : " << nama[i] << endl;
+            cout << "Gaji Pokok          : " << GajiPokok[i] << endl;
+            cout << "GajiLembur          : " << GajiLembur[i] << endl;
+            cout << "PajakGajiPokok      : " << PajakGajiPokok[i] << endl;
+            cout << "PajakLembur         : " << PajakLembur[i] << endl;
+            cout << "TotalPajak          : " << TotalPajak[i] << endl;
+            cout << "TunjanganPengabdian : " << TunjanganPengabdian[i] << endl;
+            cout << "Gaji Diterima       : " << GajiBersih[i] << endl;
+            cout << endl<<endl;
+        }
+    
+    getch(); 
+}
+    
+
